@@ -1,5 +1,6 @@
 import { useDisclosure, UseDisclosureReturn } from '@chakra-ui/react';
-import { createContext, ReactNode, useContext } from 'react';
+import { createContext, ReactNode, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface SidebarDrawerProviderProps {
   children: ReactNode;
@@ -11,6 +12,12 @@ const SidebarDrawerContext = createContext({} as SidebarDrawerContextData);
 
 export function SidebarDrawerProvider({ children }: SidebarDrawerProviderProps) {
   const disclosure = useDisclosure();
+  const router = useRouter();
+
+  // Close the sidebar when navigate to another page
+  useEffect(() => {
+    disclosure.onClose();
+  }, [router.asPath]);
 
   return (
     <SidebarDrawerContext.Provider value={disclosure}>
