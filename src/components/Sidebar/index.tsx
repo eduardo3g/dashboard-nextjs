@@ -11,7 +11,11 @@ import {
 
 import { SidebarNav } from './SidebarNav';
 
+import { useSidebarDrawer } from '../../contexts/SidebarDrawerContext';
+
 export function Sidebar() {
+  const { isOpen, onClose } = useSidebarDrawer();
+
   const isDrawerSideBar = useBreakpointValue({
     base: true,
     large: false,
@@ -20,7 +24,7 @@ export function Sidebar() {
   // Mobile version
   if (isDrawerSideBar) {
     return (
-      <Drawer isOpen={true} placement="left" onClose={() => {}}>
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay>
           <DrawerContent
             bg="gray.800"
