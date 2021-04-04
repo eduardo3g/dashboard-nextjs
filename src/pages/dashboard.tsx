@@ -80,7 +80,7 @@ export default function Dashboard() {
           align="flex-start"
         >
           <Box
-            padding="8"
+            padding={["4", "8"]}
             backgroundColor="gray.800"
             borderRadius={8}
             paddingBottom="4"
