@@ -18,7 +18,7 @@ export function Sidebar() {
 
   const isDrawerSideBar = useBreakpointValue({
     base: true,
-    large: false,
+    lg: false,
   });
 
   // Mobile version
@@ -31,7 +31,7 @@ export function Sidebar() {
             padding="4"
           >
             <DrawerCloseButton mt="6" />
-            <DrawerHeader>Navigation</DrawerHeader>
+            <DrawerHeader>Menu</DrawerHeader>
 
             <DrawerBody>
               <SidebarNav />
