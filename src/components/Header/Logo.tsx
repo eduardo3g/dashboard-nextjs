@@ -1,14 +1,25 @@
 import { Text } from '@chakra-ui/react';
 import Link from 'next/link';
 
-export function Logo() {
+interface LogoProps {
+  width?: string;
+  marginBottom?: string;
+  href?: string;
+};
+
+export function Logo({
+  width = "64",
+  marginBottom = "0",
+  href = "/dashboard"
+}: LogoProps) {
   return (
-    <Link href="/dashboard" passHref>
+    <Link href={href} passHref>
       <Text
         fontSize={["2xl", "3xl"]}
         fontWeight="bold"
         letterSpacing="tight"
-        width="64" // 256px or 16rem
+        width={width} // 256px or 16rem
+        marginBottom={marginBottom}
         _hover={{
           cursor: "pointer"
         }}
