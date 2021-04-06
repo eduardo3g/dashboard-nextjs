@@ -9,7 +9,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Input } from '../components/Form/Input';
-
+import { Logo } from '../components/Header/Logo';
 
 type SignInFormData = {
   email: string;
@@ -35,12 +35,20 @@ export default function SignIn() {
   }
 
   return (
+    <>
     <Flex
       width="100vw"
       height="100vh"
       alignItems="center"
       justifyContent="center"
+      flexDirection="column"
     >
+      <Logo
+        width="auto"
+        marginBottom="4"
+        href="/"
+      />
+
       <Flex
         as="form"
         width="100%"
@@ -79,5 +87,6 @@ export default function SignIn() {
         </Button>
       </Flex>
     </Flex>
+    </>
   )
 };
