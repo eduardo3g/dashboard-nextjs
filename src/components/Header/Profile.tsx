@@ -6,7 +6,7 @@ interface ProfileProps {
 
 export function Profile({ showProfileData = true }: ProfileProps) {
   return (
-    <Flex align="center">
+    <Flex as="a" href="/" align="center">
       { showProfileData && (
         <Box marginRight="4" textAlign="right">
           <Text>Eduardo Santana</Text>
