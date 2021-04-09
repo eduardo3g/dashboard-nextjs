@@ -24,7 +24,7 @@ import { Pagination } from '../../components/Pagination';
 import { Sidebar } from '../../components/Sidebar';
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery('users', async () => {
+  const { data, isLoading, isFetching, error } = useQuery('users', async () => {
     const response = await fetch('http://localhost:3000/api/users');
     const data = await response.json();
 
@@ -77,6 +77,13 @@ export default function UserList() {
           >
             <Heading size="lg" fontWeight="normal">
               Users
+              { !isLoading && isFetching && (
+                <Spinner
+                  size="sm"
+                  color="gray.500"
+                  marginLeft="4"
+                />
+              ) }
             </Heading>
             <Link href="/users/create" passHref>
               <Button
