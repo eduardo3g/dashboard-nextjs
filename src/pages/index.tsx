@@ -29,7 +29,7 @@ export default function SignIn() {
   const { push } = useRouter();
 
   const handleSignIn: SubmitHandler<SignInFormData> = async values => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 500));
 
     push('/dashboard');
   }
