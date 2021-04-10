@@ -6,7 +6,8 @@ import {
   VStack,
   SimpleGrid,
   HStack,
-  Button
+  Button,
+  useToast
 } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -21,6 +22,7 @@ import { Input } from '../../components/Form/Input';
 
 import { api } from '../../services/api';
 import { queryClient } from '../../services/queryClient';
+import { sleep } from 'react-query/types/core/utils';
 
 type CreateUserFormData = {
   name: string;
@@ -44,6 +46,7 @@ const createUserFormSchema = yup.object().shape({
 
 export default function CreateUser() {
   const router = useRouter();
+  const toast = useToast();
 
   const createUser = useMutation(async (user: CreateUserFormData) => {
     const response = await api.post('users', {
@@ -65,9 +68,29 @@ export default function CreateUser() {
   });
 
   const handleCreateUser: SubmitHandler<CreateUserFormData> = async (values) => {
-    await createUser.mutateAsync(values);
+    try {
+      await createUser.mutateAsync(values);
 
-    router.push('/users')
+      toast({
+        title: 'Amazing!',
+        description: 'A new user has been created.',
+        status: 'success',
+        position: 'top-right',
+        isClosable: true,
+        duration: 3000,
+      });
+
+      router.push('/users')
+    } catch (e) {
+      toast({
+        title: 'Oops!',
+        description: e.message,
+        status: 'error',
+        position: 'top-right',
+        isClosable: true,
+        duration: 3000,
+      });
+    }
   }
 
   return (
