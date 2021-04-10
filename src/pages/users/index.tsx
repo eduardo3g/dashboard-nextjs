@@ -106,6 +106,13 @@ export default function UserList() {
             <Flex justify="center">
               <Text>Failed to fetch user data.</Text>
             </Flex>
+          ) : data.users.length === 0 ? (
+            <Flex
+              justify="center"
+              margin="auto"
+            >
+              <Text fontSize="lg">Oops... No records found.</Text>
+            </Flex>
           ) : (
             <>
               <Table colorScheme="whiteAlpha">
