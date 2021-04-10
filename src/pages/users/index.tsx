@@ -104,7 +104,9 @@ export default function UserList() {
             </Flex>
           ) : error ? (
             <Flex justify="center">
-              <Text>Failed to fetch user data.</Text>
+              <Text fontSize="lg">
+                Oops... something when wrong while fetching user data.
+              </Text>
             </Flex>
           ) : data.users.length === 0 ? (
             <Flex
